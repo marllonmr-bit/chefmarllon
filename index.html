@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chef Marllon Rezende</title>
+<meta name="description" content="Marllon Rezende — Gastronomia Afetiva. Chef, educador e consultor no Rio de Janeiro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+*,::before,::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: página-livro de chef, capítulos alternados imagem/texto. Base: porcelana branca e mármore negro, como nas fotos do chef. Terracota só no que leva à proposta. */
+:root{
+  --paper:#FBFBFA;
+  --ink:#16171B;
+  --muted:#5F6168;
+  --line:#E3E3E0;
+  --terracota:#C1512E;
+  --salvia:#7C8566;
+  --oliva:#3F4530;
+  --dourado:#D9915F;
+  --panel:#F0F0EE;
+  --display:"Instrument Serif","Cormorant Garamond",Georgia,serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121317;--ink:#EDEDEA;--muted:#A2A3A8;--line:#2C2E33;--panel:#1B1C21;
+  --terracota:#D9673F;--salvia:#9AA383;--oliva:#B8BF9E;--dourado:#E3A272;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121317;--ink:#EDEDEA;--muted:#A2A3A8;--line:#2C2E33;--panel:#1B1C21;
+  --terracota:#D9673F;--salvia:#9AA383;--oliva:#B8BF9E;--dourado:#E3A272;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--terracota);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.logo{font-family:var(--display);font-size:1.6rem;letter-spacing:.01em;text-decoration:none;line-height:1}
+.logo small{display:block;font-family:var(--body);font-size:.8rem;color:var(--muted);margin-top:4px}
+.lang{display:flex;gap:10px;font-size:.72rem;color:var(--muted)}
+.lang b{color:var(--ink);font-weight:600}
+.menu-btn{background:none;border:0;cursor:pointer;font:500 .9rem var(--body);color:var(--ink);display:flex;align-items:center;gap:10px;padding:8px 0}
+.menu-btn i{display:block;width:22px;height:1px;background:currentColor;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}
+nav.drawer{border-top:1px solid var(--line)}
+nav.drawer ul{list-style:none;margin:0;padding-block:28px 34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px 28px}
+nav.drawer a{font-family:var(--display);font-size:1.7rem;text-decoration:none;line-height:1.5;transition:color .2s}
+nav.drawer a:hover{color:var(--terracota)}
+
+/* Hero */
+.hero{padding-block:clamp(56px,10vw,120px) clamp(40px,7vw,80px);text-align:center}
+.eyebrow{font-size:.95rem;color:var(--muted)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(3.2rem,11vw,9rem);line-height:.9;letter-spacing:-.01em;margin:18px 0 34px;text-transform:uppercase;text-wrap:balance}
+.quote{font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,3.2vw,2.3rem);line-height:1.25;max-width:22em;margin:0 auto;text-wrap:balance}
+.quote-sub{margin-top:18px;font-size:.95rem;color:var(--muted)}
+.stats{margin:22px auto 0;font-size:.95rem;color:var(--muted);max-width:34rem}
+.leaf{display:inline-block;width:34px;height:34px;border-radius:0 100% 0 100%;background:var(--c,var(--salvia));position:relative;flex:none}
+.leaf::after{content:"";position:absolute;left:50%;top:50%;width:140%;height:1px;background:var(--paper);transform:translate(-50%,-50%) rotate(-45deg);opacity:.55}
+.hero .leaf{margin-top:44px;--c:var(--terracota);transform:rotate(-12deg)}
+
+/* Chapters */
+.chapter{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,96px);align-items:center;padding-block:clamp(48px,8vw,110px)}
+.chapter.rev .photo{order:2}
+.chapter .txt{min-width:0;max-width:30rem;position:relative}
+.chapter .leaf{margin-bottom:22px}
+.chapter h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1;margin:0 0 6px}
+.chapter .num{font-size:.95rem;font-style:italic;font-family:var(--display);font-size:1.2rem;color:var(--muted);margin-bottom:22px;display:block}
+.chapter p{margin:0 0 14px;color:var(--ink)}
+.chapter p em{font-family:var(--display);font-size:1.15em}
+.chapter .fact{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+
+.photo{position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;background:var(--panel)}
+.photo.land{aspect-ratio:5/4}
+.photo .img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-photo{max-width:min(520px,100%);margin:48px auto 0}
+.plates{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 auto 56px;max-width:1080px}
+.plates .photo{aspect-ratio:3/4}
+@media (max-width:860px){.plates{grid-template-columns:1fr 1fr}}
+.photo figcaption{position:absolute;left:16px;bottom:14px;font-size:.85rem;color:#F7F2E8;text-shadow:0 1px 6px rgba(0,0,0,.35)}
+
+.cta-row{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--terracota);color:#FBF6EE;text-decoration:none;padding:15px 26px;border-radius:999px;font:500 .95rem var(--body);border:0;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px);background:color-mix(in srgb,var(--terracota) 88%,#000)}
+.btn-ghost{color:var(--ink);text-decoration:none;font-size:.95rem;border-bottom:1px solid var(--line);padding-bottom:2px}
+.btn-ghost:hover{border-color:var(--terracota);color:var(--terracota)}
+.promise{width:100%;font-size:.85rem;color:var(--muted);margin:2px 0 0}
+.head-cta{font-size:.82rem;padding:10px 18px}
+@media (max-width:860px){.head-cta{display:none}}
+.pill .go{margin-top:auto;padding-top:14px;font-size:.88rem;color:var(--terracota);text-decoration:none;font-weight:500}
+.pill .go:hover{text-decoration:underline;text-underline-offset:4px}
+.steps{padding-block:clamp(56px,8vw,100px);border-top:1px solid var(--line)}
+.steps h2,.prop h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.6vw,3.2rem);margin:0 0 36px;line-height:1}
+.steps ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:s}
+.steps li{counter-increment:s;min-width:0}
+.steps li::before{content:counter(s);display:block;font-family:var(--display);font-size:3.2rem;line-height:1;color:var(--terracota);margin-bottom:10px}
+.steps h4{font-family:var(--display);font-weight:400;font-size:1.45rem;margin:0 0 6px}
+.steps p{margin:0;color:var(--muted);font-size:.95rem}
+.prop{background:var(--panel);padding-block:clamp(56px,8vw,100px)}
+.prop-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,6vw,80px);align-items:start}
+.prop-grid > *{min-width:0}
+.prop .lead{color:var(--muted);max-width:26rem;margin:0 0 20px}
+.prop .contact-alt{font-size:.9rem;display:grid;gap:6px}
+form.f{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f .full{grid-column:1/-1}
+.f label{display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+.f input,.f select,.f textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 14px;width:100%}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--terracota);outline-offset:1px;border-color:transparent}
+.f textarea{min-height:96px;resize:vertical}
+.f .send{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.f small{color:var(--muted);font-size:.8rem}
+@media (max-width:860px){.steps ol{grid-template-columns:1fr}.prop-grid{grid-template-columns:1fr}}
+@media (max-width:520px){form.f{grid-template-columns:1fr}}
+.divider{display:flex;align-items:center;gap:18px;color:var(--muted)}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* Signature */
+.sig{padding-block:clamp(64px,9vw,120px);text-align:center}
+.sig h2{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(2.4rem,6vw,4.4rem);margin:0 0 48px;line-height:1}
+.dishes{list-style:none;margin:0 auto;padding:0;max-width:640px}
+.dishes li{padding-block:18px;border-bottom:1px solid var(--line)}
+.dishes li:first-child{border-top:1px solid var(--line)}
+.dishes .pt{font-family:var(--display);font-size:clamp(1.35rem,2.6vw,1.75rem);line-height:1.2;display:block}
+.dishes .en{font-size:.8rem;letter-spacing:.06em;color:var(--muted)}
+.dishes li:hover .pt{color:var(--terracota)}
+
+/* Obsession */
+.obs{background:#16171B;color:#EDEDEA;padding-block:clamp(64px,9vw,120px);text-align:center}
+:root[data-theme="dark"] .obs{background:#0B0C0E}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .obs{background:#0B0C0E}}
+.obs h3{font-family:var(--display);font-weight:400;font-size:clamp(1.9rem,4.4vw,3.2rem);margin:0 0 10px;line-height:1.05}
+.obs .sub{font-size:.75rem;opacity:.75;margin-bottom:38px}
+.tags{max-width:900px;margin:0 auto;font-family:var(--display);font-size:clamp(1.15rem,2.4vw,1.6rem);line-height:1.8;text-wrap:balance}
+.tags span{white-space:nowrap}
+.tags span:not(:last-child)::after{content:", ";opacity:.6}
+.tags .hl{font-style:italic}
+
+/* Pillars */
+.pillars{padding-block:clamp(64px,9vw,110px)}
+.pillars .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.pillars h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.6vw,3.2rem);margin:0;line-height:1}
+.pillars .head p{max-width:26rem;margin:0;color:var(--muted)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink)}
+.pill{padding:26px 22px 30px 0;min-width:0;display:flex;flex-direction:column;gap:10px}
+.pill + .pill{padding-left:22px;border-left:1px solid var(--line)}
+.pill .leaf{width:18px;height:18px}
+.pill h4{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:4px 0 0;line-height:1.1}
+.pill p{margin:0;font-size:.92rem;color:var(--muted)}
+.pill ul{list-style:none;margin:6px 0 0;padding:0;font-size:.86rem}
+.pill li{padding-block:5px;border-bottom:1px dotted var(--line)}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding-block:56px 110px;font-size:.88rem}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.fgrid h5{font-size:.7rem;color:var(--muted);font-weight:500;margin:0 0 14px}
+.fgrid ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.fgrid a{text-decoration:none}
+.fgrid a:hover{color:var(--terracota)}
+.sel{user-select:all}
+.fbrand{font-family:var(--display);font-size:2rem;line-height:1}
+.legal{margin-top:44px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:.78rem}
+
+/* Floating CTA */
+.book{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:10px;background:var(--terracota);color:#FBF6EE;text-decoration:none;padding:14px 22px;border-radius:999px;font:500 .78rem var(--body);box-shadow:0 10px 30px -10px rgba(60,20,8,.5);transition:transform .2s}
+.book:hover{transform:translateY(-2px)}
+.book .leaf{width:14px;height:14px;--c:#FBF6EE}
+.book .leaf::after{display:none}
+
+@media (max-width:860px){
+  .chapter{grid-template-columns:1fr}
+  .chapter.rev .photo{order:0}
+  .grid4{grid-template-columns:1fr 1fr}
+  .pill:nth-child(3){padding-left:0;border-left:0}
+  .pill:nth-child(n+3){border-top:1px solid var(--line)}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .lang{display:none}
+}
+@media (max-width:520px){
+  .grid4{grid-template-columns:1fr}
+  .pill,.pill + .pill{padding-left:0;border-left:0}
+  .pill + .pill{border-top:1px solid var(--line)}
+  .fgrid{grid-template-columns:1fr}
+  .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Marllon Rezende<small>Gastronomia Afetiva</small></a>
+    <a class="btn head-cta" href="#proposta">Solicitar proposta</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer"><i></i>Menu</button>
+  </div>
+  <nav class="drawer wrap" id="drawer" hidden>
+    <ul>
+      <li><a href="#chef">O Chef</a></li>
+      <li><a href="#assinatura">Assinaturas</a></li>
+      <li><a href="#pilares">Experiências</a></li>
+      <li><a href="#pilares">Educação</a></li>
+      <li><a href="#pilares">Consultoria</a></li>
+      <li><a href="#pilares">Pessoas &amp; Cultura</a></li>
+      <li><a href="#proposta">Solicitar proposta</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero wrap" id="chef">
+    <div class="eyebrow">Chef no Rio de Janeiro</div>
+    <h1>Marllon<br>Rezende</h1>
+    <p class="quote">História, cultura e afetividade à mesa.</p>
+    <p class="quote-sub">Transformamos ingredientes em memórias e negócios em experiências memoráveis.</p>
+    <div class="cta-row">
+      <a class="btn" href="#proposta">Solicitar proposta gratuita</a>
+      <a class="btn-ghost" href="#pilares">Ver serviços</a>
+      <p class="promise">Resposta pelo WhatsApp em até 2 horas.</p>
+    </div>
+    <p class="stats">Há mais de 15 anos na cozinha, com mais de 200 alunos formados.</p>
+    <figure class="photo hero-photo"><img class="img" src="img/chef-batedor.jpg" alt="Chef Marllon Rezende de dólmã branca, batendo um purê na panela" style="object-position:60% 20%"></figure>
+    <span class="leaf" aria-hidden="true"></span>
+  </section>
+
+  <section class="wrap chapter">
+    <figure class="photo" style="margin:0"><img class="img" src="img/chef-chamas.jpg" alt="Chef Marllon flambando uma frigideira de ferro no fogão" loading="lazy"><figcaption>Fogo e frigideira de ferro</figcaption></figure>
+    <div class="txt">
+      <span class="leaf" style="--c:var(--terracota)" aria-hidden="true"></span>
+      <h2>Raiz</h2>
+      <span class="num">Quem somos</span>
+      <p>Cada prato carrega uma história. Cada ingrediente revela um território. Cada técnica preserva uma cultura.</p>
+      <p>É assim que nasce a <em>Gastronomia Afetiva</em>: comida que vira memória, servida a quem senta à mesa como se fosse de casa.</p>
+      <p><em>Somos loucos por gastronomia. Loucos por pessoas. Loucos por propósito.</em></p>
+      <p class="fact">Mais de 15 anos de carreira no Rio de Janeiro.</p>
+    </div>
+  </section>
+
+  <section class="wrap chapter rev">
+    <figure class="photo" style="margin:0"><img class="img" src="img/chaleira.jpg" alt="Caldo servido da chaleira vermelha sobre tortellini de massa fresca" loading="lazy"><figcaption>Tortellini em caldo, servido à mesa</figcaption></figure>
+    <div class="txt">
+      <span class="leaf" style="--c:var(--oliva)" aria-hidden="true"></span>
+      <h2>Ofício</h2>
+      <span class="num">Técnica a serviço do afeto</span>
+      <p>Afeto sem técnica não se repete. Por isso Marllon trata a cozinha como disciplina: tempo de cocção, ponto, mise en place e ficha técnica.</p>
+      <p>Esse rigor aparece nos cursos de <em>pizza napoletana</em>, <em>massa fresca</em> e mise en place, nos eventos privados, no catering e no serviço de personal chef.</p>
+      <p class="fact">Mais de 200 alunos formados em workshops, cursos e aulas particulares.</p>
+    </div>
+  </section>
+
+  <section class="wrap chapter">
+    <figure class="photo land" style="margin:0"><img class="img" src="img/frango-pure.jpg" alt="Pratos de frango sobre purê e jus alinhados para o serviço" loading="lazy" style="object-position:50% 70%"><figcaption>Serviço de evento</figcaption></figure>
+    <div class="txt">
+      <span class="leaf" style="--c:var(--salvia)" aria-hidden="true"></span>
+      <h2>Partilha</h2>
+      <span class="num">Formar quem cozinha</span>
+      <p>Uma cozinha boa depende das pessoas que trabalham nela. Marllon leva para restaurantes e empresas o que aprendeu no fogão: cultura, liderança e padrão.</p>
+      <p>O <em>Método Marllon Rezende</em> conecta os quatro pilares de atuação para gerar resultados que se medem: 17 ferramentas em Fundamentos &amp; Cultura, Operação &amp; Padrões, Estratégia &amp; Crescimento e Financeiro &amp; Controle.</p>
+      <p class="fact">Inclui CMV, fichas técnicas, POPs, PDI e Hunter Gastronômico.</p>
+    </div>
+  </section>
+
+  <section class="sig wrap" id="assinatura">
+    <h2>Assinaturas</h2>
+    <div class="plates">
+      <figure class="photo" style="margin:0"><img class="img" src="img/massa-frutos-do-mar.jpg" alt="Massa fresca com camarão e lula" loading="lazy"></figure>
+      <figure class="photo" style="margin:0"><img class="img" src="img/risoto.jpg" alt="Risoto de frutos do mar" loading="lazy" style="object-position:50% 75%"></figure>
+      <figure class="photo" style="margin:0"><img class="img" src="img/cordeiro.jpg" alt="Carré de cordeiro regado na manteiga em frigideira de ferro" loading="lazy"></figure>
+      <figure class="photo" style="margin:0"><img class="img" src="img/galeto.jpg" alt="Galeto assado com legumes e ovo cozido" loading="lazy"></figure>
+    </div>
+    <ul class="dishes">
+      <li><span class="pt">Massa fresca com frutos do mar</span><span class="en">Fresh pasta with seafood</span></li>
+      <li><span class="pt">Risoto de frutos do mar</span><span class="en">Seafood risotto</span></li>
+      <li><span class="pt">Carré de cordeiro na manteiga</span><span class="en">Butter-basted rack of lamb</span></li>
+      <li><span class="pt">Galeto assado, legumes e ovo cozido</span><span class="en">Roast spring chicken, vegetables and boiled egg</span></li>
+      <li><span class="pt">Tortellini em caldo</span><span class="en">Tortellini in broth</span></li>
+      <li><span class="pt">Frango, purê e jus</span><span class="en">Chicken, purée and jus</span></li>
+      <li><span class="pt">Pizza napoletana</span><span class="en">Neapolitan pizza</span></li>
+    </ul>
+  </section>
+
+  <section class="obs">
+    <div class="wrap">
+      <h3>Uma obsessão</h3>
+      <div class="sub">Quatro pilares, cinco sentidos</div>
+      <p class="tags">
+        <span class="hl">Afeto</span><span>Memória</span><span>Estação</span><span>Terroir</span><span>Fogo</span><span class="hl">A mão</span><span>Massa fresca</span><span>Pizza napolitana</span><span>Brigada</span><span>Ficha técnica</span><span>Mise en place</span><span class="hl">Cultura</span><span>Liderança</span><span>Pessoas</span><span>Mesa</span><span>Transmissão</span><span>Cozinha brasileira</span><span class="hl">Partilha</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="pillars wrap" id="pilares">
+    <div class="head">
+      <h2>Da cozinha à gestão</h2>
+      <p>Do conhecimento à experiência. Quatro pilares ligados pelo Método Marllon Rezende.</p>
+    </div>
+    <div class="grid4">
+      <div class="pill"><span class="leaf" style="--c:var(--terracota)" aria-hidden="true"></span><h4>Experiências</h4><p>A mesa montada para a sua ocasião.</p><ul><li>Eventos privados</li><li>Catering</li><li>Personal chef</li><li>Experiências gastronômicas</li></ul><a class="go" href="#proposta" data-svc="Experiências">Pedir proposta de evento</a></div>
+      <div class="pill"><span class="leaf" style="--c:var(--dourado)" aria-hidden="true"></span><h4>Educação</h4><p>Técnica ensinada com as mãos na massa.</p><ul><li>Workshops</li><li>Cursos</li><li>Treinamentos</li><li>Aulas particulares</li></ul><a class="go" href="#proposta" data-svc="Educação">Ver turmas e aulas</a></div>
+      <div class="pill"><span class="leaf" style="--c:var(--oliva)" aria-hidden="true"></span><h4>Consultoria</h4><p>Restaurantes com padrão, margem e rumo.</p><ul><li>Processos e gestão</li><li>CMV e fichas técnicas</li><li>POPs</li><li>Recrutamento e seleção</li></ul><a class="go" href="#proposta" data-svc="Consultoria">Falar sobre meu restaurante</a></div>
+      <div class="pill"><span class="leaf" style="--c:var(--salvia)" aria-hidden="true"></span><h4>Pessoas &amp; Cultura</h4><p>Equipes que sabem por que cozinham.</p><ul><li>Desenvolvimento de liderança</li><li>Cultura organizacional</li><li>Hunter Gastronômico</li><li>Desenvolvimento de equipes</li></ul><a class="go" href="#proposta" data-svc="Pessoas & Cultura">Falar sobre minha equipe</a></div>
+    </div>
+  </section>
+</main>
+
+<section class="steps wrap" aria-labelledby="como">
+  <h2 id="como">Como funciona</h2>
+  <ol>
+    <li><h4>Você conta a ocasião</h4><p>Tipo de serviço, data e número de pessoas. Leva menos de um minuto.</p></li>
+    <li><h4>Recebe a proposta</h4><p>Personalizada e gratuita, pelo WhatsApp, em até 2 horas.</p></li>
+    <li><h4>O chef assume a cozinha</h4><p>Cardápio, compras, execução e serviço, do primeiro ao último prato.</p></li>
+  </ol>
+</section>
+
+<section class="prop" id="proposta" aria-labelledby="prop-t">
+  <div class="wrap prop-grid">
+    <div>
+      <h2 id="prop-t">Solicitar proposta</h2>
+      <p class="lead">Preencha o que souber. A mensagem chega pronta no WhatsApp do chef e você recebe a resposta em até 2 horas.</p>
+      <div class="contact-alt">
+        <span>WhatsApp: <span class="sel">(21) 99147-6902</span></span>
+        <span>E-mail: <span class="sel">marllonmr@gmail.com</span></span>
+      </div>
+    </div>
+    <form class="f" id="propForm" novalidate>
+      <label class="full">Seu nome<input id="f-nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar"></label>
+      <label class="full">O que você precisa
+        <select id="f-svc" name="servico">
+          <option>Experiências (evento, catering, personal chef)</option>
+          <option>Educação (workshop, curso, aula particular)</option>
+          <option>Consultoria para restaurante</option>
+          <option>Pessoas &amp; Cultura (liderança, equipe, seleção)</option>
+        </select>
+      </label>
+      <label>Data<input id="f-data" name="data" type="date"></label>
+      <label>Nº de pessoas<input id="f-pessoas" name="pessoas" type="number" min="1" inputmode="numeric" placeholder="Ex.: 40"></label>
+      <label class="full">Detalhes (opcional)<textarea id="f-det" name="detalhes" placeholder="Local, tipo de cozinha, restrições alimentares, orçamento previsto"></textarea></label>
+      <div class="send">
+        <a class="btn" id="f-send" href="https://wa.me/5521991476902" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+        <small>Sem compromisso. A proposta é gratuita.</small>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><div class="fbrand">Marllon Rezende</div><p style="color:var(--muted);margin:10px 0 0;max-width:20rem">Da cozinha à gestão. Do conhecimento à experiência.</p><p style="margin:14px 0 0;max-width:20rem">Resposta pelo WhatsApp em até 2 horas, com proposta personalizada e gratuita.</p></div>
+      <div><h5>Sobre</h5><ul><li><a href="#chef">O Chef</a></li><li><a href="#assinatura">Assinaturas</a></li><li><a href="#pilares">Serviços</a></li>
+      <div><h5>Contato</h5><ul>
+        <li><a href="https://wa.me/5521991476902" target="_blank" rel="noopener">WhatsApp</a> <span class="sel">(21) 99147-6902</span></li>
+        <li><span class="sel">marllonmr@gmail.com</span></li>
+        <li><a href="https://www.instagram.com/marllonrezende_/" target="_blank" rel="noopener">@marllonrezende_</a></li>
+      </ul></div>
+      <div><h5>Para empresas</h5><ul><li>Eventos corporativos</li><li>Consultoria de restaurantes</li><li>Seleção e treinamento</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Marllon Rezende, chefmarllon.com.br</span><span>Rio de Janeiro, Brasil</span></div>
+  </div>
+</footer>
+
+<a class="book" href="#proposta"><span class="leaf" aria-hidden="true"></span>Solicitar proposta</a>
+
+<script>
+(function(){
+  var b=document.getElementById('menuBtn'),d=document.getElementById('drawer');
+  b.addEventListener('click',function(){var o=d.hidden;d.hidden=!o;b.setAttribute('aria-expanded',String(o));});
+  d.addEventListener('click',function(e){if(e.target.tagName==='A'){d.hidden=true;b.setAttribute('aria-expanded','false');}});
+})();
+(function(){
+  var map={"Experiências":0,"Educação":1,"Consultoria":2,"Pessoas & Cultura":3};
+  var sel=document.getElementById('f-svc');
+  document.querySelectorAll('.go[data-svc]').forEach(function(a){
+    a.addEventListener('click',function(){sel.selectedIndex=map[a.dataset.svc]||0;build();});
+  });
+  var ids=['f-nome','f-svc','f-data','f-pessoas','f-det'],send=document.getElementById('f-send');
+  function v(id){return (document.getElementById(id).value||'').trim();}
+  function build(){
+    var d=v('f-data'),dt=d?d.split('-').reverse().join('/'):'';
+    var m=['Olá, Chef Marllon! Gostaria de uma proposta.'];
+    if(v('f-nome'))m.push('Nome: '+v('f-nome'));
+    m.push('Serviço: '+v('f-svc'));
+    if(dt)m.push('Data: '+dt);
+    if(v('f-pessoas'))m.push('Pessoas: '+v('f-pessoas'));
+    if(v('f-det'))m.push('Detalhes: '+v('f-det'));
+    send.href='https://wa.me/5521991476902?text='+encodeURIComponent(m.join('\n'));
+  }
+  ids.forEach(function(id){var el=document.getElementById(id);el.addEventListener('input',build);el.addEventListener('change',build);});
+  document.getElementById('propForm').addEventListener('submit',function(e){e.preventDefault();});
+  build();
+  var book=document.querySelector('.book'),prop=document.getElementById('proposta');
+  if('IntersectionObserver' in window&&book){new IntersectionObserver(function(es){book.hidden=es[0].isIntersecting;},{threshold:.15}).observe(prop);}
+})();
+</script>
+
+</body>
+</html>
