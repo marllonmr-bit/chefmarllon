@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sua aula gratuita está liberada | Chef Marllon Rezende</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1A1410">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Italiana&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/config.js"></script>
+</head>
+<body data-stage="confirmacao">
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Marllon Rezende<small>Gastronomia Afetiva</small></a>
+  </div>
+</header>
+
+<main>
+<section class="ty-hero on-dark">
+  <div class="wrap">
+    <span class="eyebrow">Cadastro confirmado</span>
+    <h1><span id="hello">Pronto!</span> Sua aula gratuita está <em>liberada.</em></h1>
+    <p class="lead">Assista agora à demonstração do branqueamento de legumes.<span id="mailNote" hidden> Também enviamos o acesso para o seu e-mail.</span></p>
+    <div class="ty-steps"><span>Cadastro</span><span class="now">Aula gratuita</span><span class="next">Módulo 1</span></div>
+  </div>
+</section>
+
+<section class="ty-video">
+  <div class="wrap">
+    <div class="player" id="player"></div>
+    <div class="ty-tips">
+      <div><b>01</b><span>Cocção rápida em água fervente e salgada.</span></div>
+      <div><b>02</b><span>Choque térmico em água com gelo para interromper o cozimento.</span></div>
+      <div><b>03</b><span>Cor viva, textura firme e sabor preservado.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ty-bridge">
+  <div class="wrap">
+    <div class="ty-card rv">
+      <div class="photo"><img data-src="lessons" alt="Chef Marllon Rezende finalizando um bife na frigideira" loading="lazy"></div>
+      <div class="txt">
+        <span class="eyebrow">Próximo passo · Módulo 1</span>
+        <h2>Uma técnica simples. <em>Agora imagine dominar os fundamentos.</em></h2>
+        <p>O branqueamento é uma das dez preparações-base do Módulo 1 — Técnicas Básicas da Gastronomia. Do arroz ao bife perfeito com arroser, do purê com a técnica dessécher ao ovo cozido perfeito.</p>
+        <ul>
+          <li>Arroz e feijão</li><li>Bife perfeito com a técnica arroser</li>
+          <li>Reação de Maillard</li><li>Frango e peixe suculentos</li>
+          <li>Purê com a técnica dessécher</li><li>Ovo cozido perfeito</li><li>Legumes e saladas</li>
+        </ul>
+        <div class="ctas">
+          <a class="btn btn-gold" id="toSales" href="curso.html" data-cta="confirmacao_conhecer_modulo">Conheça o Módulo 1 <span class="arr">→</span></a>
+          <a class="btn btn-ghost" id="toCheckout" href="curso.html#oferta" data-cta="confirmacao_comprar" style="color:var(--off)">Quero começar agora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="mini-foot">
+  <div class="wrap">
+    <span>© <span id="yr"></span> Chef Marllon Rezende · Gastronomia, técnica e afetividade.</span>
+    <span>Dúvidas? WhatsApp (21) 99147-6902</span>
+  </div>
+</footer>
+
+<script src="assets/js/funnel.js"></script>
+<script>
+(function(){
+  var C=window.CONFIG, F=window.FUNNEL;
+  F.photos(); F.reveal();
+  F.event('view_thanks_page',{},'ViewContent');
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  if(C.emailAutomationActive) document.getElementById('mailNote').hidden=false;
+  var n=F.leadName(); if(n) document.getElementById('hello').textContent=n.replace(/[<>]/g,'')+',';
+
+  var sales=F.withUtm(C.pages.sales);
+  document.getElementById('toSales').href=sales;
+  var co=document.getElementById('toCheckout');
+  if(C.checkoutUrl){ co.href=F.checkout(); co.target='_blank'; co.rel='noopener'; co.addEventListener('click',function(){ F.trackCheckout('confirmacao_comprar'); }); }
+  else co.href=sales.split('#')[0]+'#oferta';
+
+  var p=document.getElementById('player');
+  if(C.freeLessonUrl){
+    var b=document.createElement('button'); b.setAttribute('aria-label','Assistir à aula gratuita');
+    b.innerHTML=(C.freeLessonCover?'<img src="'+C.freeLessonCover+'" alt="">':'')+'<span class="play" aria-hidden="true" style="top:50%"></span>';
+    b.addEventListener('click',function(){ p.innerHTML=''; p.appendChild(F.media(C.freeLessonUrl,C.freeLessonCover,'aula_gratis_branqueamento')); });
+    p.appendChild(b);
+  } else {
+    p.innerHTML='<div class="ph-msg"><div><b>Aula gratuita: branqueamento de legumes</b><span>O vídeo entra aqui. Cole o link em <code>freeLessonUrl</code> no arquivo de configuração.</span></div></div>';
+  }
+})();
+</script>
+</body>
+</html>
